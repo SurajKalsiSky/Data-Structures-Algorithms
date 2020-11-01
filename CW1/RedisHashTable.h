@@ -30,10 +30,10 @@ public:
 	}
 	void Insert(int key, V* item) { // function takes key and a pointer to the vector being stored
 		cout << '\n';
-		int hash = HashFunction(key); // get index value via hash function
+		int hash = key % size; // get index value via hash function
 		while (data[hash] != NULL) { // if there already is a value at that index, find a new slot
 			++hash; // increment hash value
-			hash = HashFunction(hash); // get new index value via hash function
+			hash = HashFunction(hash); // get new index value via hash function (double hashing)
 		}
 		data[hash] = item; // set reference value in hash table
 		V redisCommand = *item; // get actual vector from pointer reference
